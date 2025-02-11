@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Attractors\LorenzAttractor.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Attractors\ThomasSymmetricAttractor.cpp" />
+    <ClCompile Include="src\Attractors\CliffordAttractor.cpp" />
+    <ClCompile Include="src\Artists\HistogramArtist.cpp" />
+    <ClCompile Include="src\Attractors\PeterDeJongAttractor.cpp" />
+    <ClCompile Include="src\Attractors\DuffingAttractor.cpp" />
+    <ClCompile Include="src\Attractors\TinkerbellAttractor.cpp" />
+    <ClCompile Include="src\Attractors\JohnnySvenssonAttractor.cpp" />
+    <ClCompile Include="src\Attractors\GummowskiMiraAttractor.cpp" />
+    <ClCompile Include="src\Attractors\HenonMapBifurcationAttractor.cpp" />
+    <ClCompile Include="src\Attractors\QuadraticSporttAttractor.cpp" />
+    <ClCompile Include="src\Artists\ParticleArtist.cpp" />
+    <ClCompile Include="src\Attractors\LangfordAttractor.cpp" />
+    <ClCompile Include="src\Attractors\DadrasAttractor.cpp" />
+    <ClCompile Include="src\Attractors\ChenAttractor.cpp" />
+    <ClCompile Include="src\Attractors\HalvorsenAttractor.cpp" />
+    <ClCompile Include="src\Attractors\RosslerAttractor.cpp" />
+    <ClCompile Include="src\Attractors\RabinovichFabrikantAttractor.cpp" />
+    <ClCompile Include="src\Attractors\SprottBAttractor.cpp" />
+    <ClCompile Include="src\ofPointSpaceApp3D.cpp" />
+    <ClCompile Include="src\ofPointSpaceApp2D.cpp" />
+    <ClCompile Include="src\ofHistogramApp.cpp" />
+    <ClCompile Include="src\ofParticlesApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Attractors\AbstractAttractor.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Attractors\LorenzAttractor.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Artists\PointSpaceArtist.h" />
+    <ClInclude Include="src\Attractors\ThomasSymmetricAttractor.h" />
+    <ClInclude Include="src\Attractors\CliffordAttractor.h" />
+    <ClInclude Include="src\Artists\HistogramArtist.h" />
+    <ClInclude Include="src\Artists\AbstractArtist.h" />
+    <ClInclude Include="src\Attractors.h" />
+    <ClInclude Include="src\Common\AttMath.h" />
+    <ClInclude Include="src\Common\AttTypes.h" />
+    <ClInclude Include="src\Artists.h" />
+    <ClInclude Include="src\Attractors\PeterDeJongAttractor.h" />
+    <ClInclude Include="src\Attractors\DuffingAttractor.h" />
+    <ClInclude Include="src\Attractors\TinkerbellAttractor.h" />
+    <ClInclude Include="src\Attractors\JohnnySvenssonAttractor.h" />
+    <ClInclude Include="src\Attractors\GummowskiMiraAttractor.h" />
+    <ClInclude Include="src\Attractors\QuadraticSporttAttractor.h" />
+    <ClInclude Include="src\Attractors\HenonMapBifurcationAttractor.h" />
+    <ClInclude Include="src\Artists\ParticleArtist.h" />
+    <ClInclude Include="src\Attractors\LangfordAttractor.h" />
+    <ClInclude Include="src\Attractors\DadrasAttractor.h" />
+    <ClInclude Include="src\Attractors\ChenAttractor.h" />
+    <ClInclude Include="src\Attractors\HalvorsenAttractor.h" />
+    <ClInclude Include="src\Attractors\RosslerAttractor.h" />
+    <ClInclude Include="src\Attractors\RabinovichFabrikantAttractor.h" />
+    <ClInclude Include="src\Attractors\SprottBAttractor.h" />
+    <ClInclude Include="src\Gradient.h" />
+    <ClInclude Include="src\ofPointSpaceApp3D.h" />
+    <ClInclude Include="src\ofPointSpaceApp2D.h" />
+    <ClInclude Include="src\ofHistogramApp.h" />
+    <ClInclude Include="src\ofParticlesApp.h" />
+    <ClInclude Include="src\ofAbstractAttractorApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>
