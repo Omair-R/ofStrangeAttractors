@@ -8,6 +8,10 @@
 
 namespace att {
 
+	/// <summary>
+	/// This class draws one particle on the screen, along with all its previous positions. 
+	/// </summary>
+	/// <typeparam name="N">The dimension of the attractor.</typeparam>
 	template <unsigned int N>
 	class PointSpaceArtist :
 		public AbstractArtist<N>
@@ -25,12 +29,27 @@ namespace att {
 			int init_iterations = 100
 		);
 
+		/// <summary>
+		/// Draws all the positions the particle of the attractor took so far the window/screen.
+		/// </summary>
 		void draw() override;
 
+		/// <summary>
+		/// Immediatly find all positions an attractor takes up to the maximum iteration and ready them for drawing.
+		/// </summary>
 		void dump() override;
 
-		void update(int update_speed=200, bool reset=false) override;
+		/// <summary>
+		/// Periodically updates the position of the particle and keeps record of all its previous positions.
+		/// </summary>
+		/// <param name="update_speed">: The number of iterations to be taken in a single update frame.</param>
+		/// <param name="reset">: Resets the system and starts from </param>
+		void update(int update_speed=1, bool reset=false) override;
 
+		/// <summary>
+		/// Enables gradient color mode. It uses the velocity of the particle to assign a position in the a gradient spectrum. 
+		/// </summary>
+		/// <param name="gradient"></param>
 		void velocityBasedColorMode(std::shared_ptr<Gradient> gradient);
 
 	protected:
@@ -44,6 +63,7 @@ namespace att {
 		void _singleStep() override;
 
 		ofMesh m_attractor_mesh;
+		std::array<real, N> m_init_position;
 		std::array<real, N> m_position;
 
 		std::shared_ptr<Gradient> m_gradient = nullptr;
@@ -83,6 +103,7 @@ namespace att {
 		}
 		p_attractor = attractor;
 		m_position = init_position;
+		m_init_position = init_position;
 		m_iterations = iterations;
 
 		m_position = p_attractor->init(m_position, init_iterations);
@@ -163,6 +184,7 @@ namespace att {
 		if (reset) {
 			m_attractor_mesh.clear();
 			m_current_iteration = 0;
+			m_position = m_init_position;
 		}
 
 		for (int i = 0; i < update_speed; i++) {

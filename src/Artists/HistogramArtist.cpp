@@ -50,6 +50,7 @@ inline void att::HistogramArtist::_init(
 	}
 	p_attractor = attractor;
 	m_position = init_position;
+	m_init_position = init_position;
 	m_iterations = iterations;
 
 	m_position = p_attractor->init(m_position, init_iterations);
@@ -169,6 +170,7 @@ void att::HistogramArtist::update(int update_speed, bool reset) {
 	if (reset) {
 		m_current_iteration = 0;
 		m_positions.clear();
+		m_position = m_init_position;
 	}
 
 	if (m_current_iteration < m_iterations) {
@@ -224,6 +226,9 @@ void att::HistogramArtist::_singleStep() {
 	default:
 		break;
 	}
+
+	if (m_position[0] != m_position[0] || m_position[1] != m_position[1])
+		throw exception("Error: Unstable attractor. Adjust the parameters of the attractor so as to ensure stability.");
 
 	m_positions.push_back(m_position);
 

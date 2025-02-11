@@ -5,15 +5,13 @@ ofParticlesApp::ofParticlesApp(
 	int particle_num,
 	ofColor point_color, 
 	int max_iterations, 
-	std::array<att::real, 3> init_position, 
+	std::array<att::real, 3> max_position,
+	std::array<att::real, 3> min_position,
 	int drawing_speed,
 	int init_iterations, 
 	ofColor background_color
 ) : ofParticlesApp(
-		max_iterations,
-		init_position,
 		drawing_speed,
-		init_iterations,
 		background_color
 	)
 {
@@ -21,9 +19,10 @@ ofParticlesApp::ofParticlesApp(
 
 	p_artist->init(
 		attractor,
-		m_max_iterations,
-		m_init_iteraltions,
-		m_init_position
+		max_iterations,
+		init_iterations,
+		max_position,
+		min_position
 	);
 
 	p_artist->singularColorMode(point_color);
@@ -34,15 +33,13 @@ ofParticlesApp::ofParticlesApp(
 	int particle_num,
 	std::shared_ptr<att::Gradient> gradient, 
 	int max_iterations, 
-	std::array<att::real, 3> init_position, 
+	std::array<att::real, 3> max_position,
+	std::array<att::real, 3> min_position,
 	int drawing_speed,
 	int init_iterations, 
 	ofColor background_color
 ) : ofParticlesApp(
-		max_iterations,
-		init_position,
 		drawing_speed,
-		init_iterations,
 		background_color
 	)
 {
@@ -50,9 +47,10 @@ ofParticlesApp::ofParticlesApp(
 
 	p_artist->init(
 		attractor,
-		m_max_iterations,
-		m_init_iteraltions,
-		m_init_position
+		max_iterations,
+		init_iterations,
+		max_position,
+		min_position
 	);
 
 	p_artist->velocityBasedColorMode(gradient);

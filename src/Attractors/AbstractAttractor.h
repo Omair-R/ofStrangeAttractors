@@ -14,11 +14,40 @@ namespace att {
 		AbstractAttractor(real step_size, bool calc_velocity);
 		virtual ~AbstractAttractor() {}
 
+		/// <summary>
+		/// Initializes the attractor, by registering the initial coordinates and running a few warmup iterations.
+		/// </summary>
+		/// <param name="initial_coords">The starting coordinates of the system.</param>
+		/// <param name="init_iterations">The number of initial/warmup iterations to perform before drawing.</param>
+		/// <returns> An array that represents the position of the particle post warmup.</returns>
 		virtual std::array<real, N> init(const std::array<real, N>& initial_coords, int init_iterations=100);
+
+		/// <summary>
+		/// Computes the gradient for use by the ODE solvers. This is the only method that attractor classes need to implement. 
+		/// This method does not apply the step size and leaves it to solvers. If whichever equation pre-applies the step size, you should divide by the step size.
+		/// </summary>
+		/// <param name="current"> The current position of the particle.</param>
+		/// <returns>An array that hosts the gradient.</returns>
 		virtual std::array<real, N> findDerivative(const std::array<real, N>& current) = 0;
 
+		/// <summary>
+		/// Takes a step based on the Euler method for solveing ODEs. https://en.wikipedia.org/wiki/Euler_method
+		/// </summary>
+		/// <param name="current">The current position of the particle.</param>
+		/// <returns>Next position for the particle.</returns>
 		virtual std::array<real, N> eulerStep(const std::array<real, N>& current);
+
+		/// <summary>
+		/// Takes a step based on the Runge–Kutta method for solveing ODEs. RK2 signifies that k=2. https://en.wikipedia.org/wiki/Euler_method
+		/// </summary>
+		/// <param name="current">The current position of the particle.</param>
+		/// <returns>Next position for the particle.</returns>
 		virtual std::array<real, N> RK2Step(const std::array<real, N>& current);
+
+		/// <summary>
+		/// Returns the last recorded velocity value (gradient).
+		/// </summary>
+		/// <returns>An array that hosts the latest gradient.</returns>
 		virtual std::array<real, N> getLastVelocity();
 
 	protected:

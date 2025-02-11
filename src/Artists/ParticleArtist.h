@@ -3,6 +3,11 @@
 #include "../Gradient.h"
 
 namespace att {
+
+	/// <summary>
+	/// This artist class draws a specified number of particles moving along the path of the attractor. 
+	/// The initial positions of these particles is sampled randomly from a uniform distribution with preset minimum and maximum.
+	/// </summary>
 	class ParticleArtist :
 		public AbstractArtist<3>
 	{
@@ -20,14 +25,33 @@ namespace att {
 			std::array<real, 3> min_initial_position = { 0.0, 0.0, 0.0 }
 		);
 
+		/// <summary>
+		/// Draws all the particles of the attractor onto the window/screen.
+		/// </summary>
 		void draw() override;
-
+		
+		/// <summary>
+		/// This method does not apply to this class. IT WILL THROW AN ERROR. Use update instead.
+		/// </summary>
 		void dump() override;
 
-		void update(int update_speed = 200, bool reset = false) override;
+		/// <summary>
+		/// Periodically updates the position of each particle.
+		/// </summary>
+		/// <param name="update_speed">: The number of iterations to be taken in a single update frame.</param>
+		/// <param name="reset">: Resets the system and starts from </param>
+		void update(int update_speed = 1, bool reset = false) override;
 
+		/// <summary>
+		/// Enables signular color mode, which utilizes only one color to draw the attractor. 
+		/// </summary>
+		/// <param name="color"></param>
 		virtual void singularColorMode(ofColor color) override;
 
+		/// <summary>
+		/// Enables gradient color mode. It uses the velocity of the particle to assign a position in the a gradient spectrum. 
+		/// </summary>
+		/// <param name="gradient"></param>
 		virtual void velocityBasedColorMode(std::shared_ptr<att::Gradient> gradient);
 
 

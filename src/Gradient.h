@@ -9,6 +9,10 @@ namespace att {
 	
 	using colorPos = std::pair<ofColor, real>;
 
+	/// <summary>
+	/// This class defines a gradient of colors. It constructs a gradient between at least two colors at the opposit ends of the gradient. 
+	/// Any number of extra colors can be added positioned differently across the spectrum.
+	/// </summary>
 	class Gradient {
 
 	public:
@@ -26,6 +30,11 @@ namespace att {
 			: m_definers( std::move(gradient.m_definers))
 		{}
 
+		/// <summary>
+		/// Add a color to the gradient spectrum. Accepts only positional values between 0 and 1.
+		/// </summary>
+		/// <param name="color">: The color to be added to the spectrum.</param>
+		/// <param name="position">: The position of that specific color in the spectrum. (must be in the range of 0-1).</param>
 		void addColor(const ofColor& color, real position) {
 
 			if (position <= 0.0 || position >= 1.0)
@@ -36,6 +45,11 @@ namespace att {
 			std::sort(m_definers.begin(), m_definers.end(), _colorPosComp);
 		}
 
+		/// <summary>
+		/// Get an interpolated color from a specific position in the spectrum.
+		/// </summary>
+		/// <param name="position">: The position of the color. (must be in the range of 0-1).</param>
+		/// <returns>The color interpolated.</returns>
 		ofColor getColor(real position) {
 
 			if (position < 0.0 || position > 1.0)
