@@ -127,7 +127,6 @@
     <ClCompile Include="src\Attractors\SprottBAttractor.cpp" />
     <ClCompile Include="src\Attractors\TinkerbellAttractor.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\Attractors\ThomasSymmetricAttractor.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +161,6 @@
     <ClInclude Include="src\Attractors\AbstractAttractor.h" />
     <ClInclude Include="src\Attractors\LorenzAttractor.h" />
     <ClInclude Include="src\Gradient.h" />
-    <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\Attractors\ThomasSymmetricAttractor.h" />
   </ItemGroup>
   <ItemGroup>
