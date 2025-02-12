@@ -62,6 +62,8 @@ namespace att {
 
 		void _singleStep() override;
 
+		real m_max_vel = ATT_MIN_REAL;
+		real m_min_vel = ATT_MAX_REAL;
 		ofMesh m_attractor_mesh;
 		std::array<real, N> m_init_position;
 		std::array<real, N> m_position;
@@ -195,7 +197,7 @@ namespace att {
 
 			_singleStep();
 
-			float val;
+			real val;
 			switch (m_color_mode)
 			{
 			case ColorMode::COLOR_MODE_SINGULAR:
@@ -203,7 +205,11 @@ namespace att {
 				break;
 			case ColorMode::COLOR_MODE_VELOCITY_BASED: // Update the gradient based on velocity wiht normalization.
 				val = magnitude(p_attractor->getLastVelocity());
-				val = ofClamp(val, 0, 255) / 255.0;
+				m_max_vel = std::max(val, m_max_vel);
+				m_min_vel = std::min(val, m_min_vel);
+
+				val = att::normalize(val, m_max_vel, m_min_vel);
+
 				m_attractor_mesh.addColor(m_gradient->getColor(val));
 				break;
 			default:
