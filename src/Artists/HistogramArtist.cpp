@@ -5,7 +5,8 @@ att::HistogramArtist::HistogramArtist(
 	int histogram_height, 
 	ofColor background_color,
 	std::array<int, 2> drawing_margin,
-	ofPrimitiveMode mode
+	ofPrimitiveMode mode,
+	const std::filesystem::path& file_name
 ) : AbstractArtist<2>(OdeSolver::EULER) {
 
 	m_histogram_width = histogram_width;
@@ -13,6 +14,9 @@ att::HistogramArtist::HistogramArtist(
 	m_attractor_image.allocate(histogram_width, histogram_height, OF_IMAGE_COLOR);
 	m_background_color = background_color;
 	m_drawing_margin = drawing_margin;
+	m_file_name = file_name;
+	if (!m_file_name.empty()) 
+		m_should_save_file = true;
 }
 
 void att::HistogramArtist::init(std::shared_ptr<AbstractAttractor<2>> attractor, std::array<att::real, 2> init_position, int iterations, int init_iterations)
@@ -137,8 +141,12 @@ void att::HistogramArtist::draw() {
 		m_should_redraw = false;
 
 		if (m_dumped) {
+			if (m_should_save_file)
+				ofSaveImage(m_attractor_image.getPixelsRef(), m_file_name);
+				//m_attractor_image.save(m_file_name);
 			m_positions.clear();
 			m_positions = vector<std::array<att::real, 2>>();
+			m_dumped = false;
 		}
 	}
 	m_attractor_image.draw(m_drawing_margin[0], m_drawing_margin[1]);

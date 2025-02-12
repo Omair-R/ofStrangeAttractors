@@ -20,7 +20,8 @@ namespace att{
 			int histogram_height,
 			ofColor background_color = ofColor::black,
 			std::array<int, 2> drawing_margin = {20, 20},
-			ofPrimitiveMode mode = OF_PRIMITIVE_POINTS
+			ofPrimitiveMode mode = OF_PRIMITIVE_POINTS,
+			const std::filesystem::path &file_name = ""
 		);
 
 		void init(
@@ -100,7 +101,11 @@ namespace att{
 		real m_blend_strength = 1.0f;
 
 		bool m_should_redraw = false;
+		bool m_should_save_file = false;
 		bool m_blend_with_background = false;
+
+		std::filesystem::path m_file_name = "";
+
 
 		ofColor m_background_color;
 		std::array<int, 2> m_drawing_margin;

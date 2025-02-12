@@ -1,8 +1,9 @@
 #pragma once
 #include "Artists.h"
 #include "Attractors.h"
+#include "ofAbstractAttractorApp.h"
 
-class ofHistogramApp : public ofBaseApp
+class ofHistogramApp : public ofAbstractAttractorApp
 {
 public:
 
@@ -16,7 +17,8 @@ public:
 		std::array<att::real, 2> init_position = { 1.0f, 1.0f },
 		int init_iterations = 100,
 		ofColor background_color = ofColor::black,
-		int background_blend_strength = 100
+		int background_blend_strength = 100,
+		const std::filesystem::path& file_name = ""
 	);
 
 	ofHistogramApp(
@@ -29,24 +31,13 @@ public:
 		std::array<att::real, 2> init_position = { 1.0f, 1.0f },
 		int init_iterations = 100,
 		ofColor background_color = ofColor::black,
-		int background_blend_strength = 100
+		int background_blend_strength = 100,
+		const std::filesystem::path& file_name = ""
 	);
 
 	void setup();
 	void update();
 	void draw();
-
-	void keyPressed(int key) {}
-	void keyReleased(int key) {}
-	void mouseMoved(int x, int y) {}
-	void mouseDragged(int x, int y, int button) {}
-	void mousePressed(int x, int y, int button) {}
-	void mouseReleased(int x, int y, int button) {}
-	void mouseEntered(int x, int y) {}
-	void mouseExited(int x, int y) {}
-	void windowResized(int w, int h) {}
-	void dragEvent(ofDragInfo dragInfo) {}
-	void gotMessage(ofMessage msg) {}
 
 private:
 

@@ -2,7 +2,7 @@
 #include "ofMain.h"
 #include "Artists.h"
 #include "Attractors.h"
-
+#include "Common/AttUtils.h"
 class ofAbstractAttractorApp : public ofBaseApp{
 
 public:
@@ -10,7 +10,13 @@ public:
 	virtual void update() = 0;
 	virtual void draw() = 0;
 
-	void keyPressed(int key) {}
+	void keyPressed(int key) {
+		ofImage  img;
+		if (key == 'x') {
+			img.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
+			img.save(att::generate_random_string(14)+".png");
+		}
+	}
 	void keyReleased(int key) {}
 	void mouseMoved(int x, int y) {}
 	void mouseDragged(int x, int y, int button) {}

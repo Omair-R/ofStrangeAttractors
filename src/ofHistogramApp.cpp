@@ -11,7 +11,8 @@ ofHistogramApp::ofHistogramApp(
 	std::array<att::real, 2> init_position, 
 	int init_iterations, 
 	ofColor background_color, 
-	int background_blend_strength) : ofHistogramApp(
+	int background_blend_strength,
+	const std::filesystem::path& file_name) : ofHistogramApp(
 		image_width,
 		image_height,
 		max_iterations,
@@ -21,7 +22,14 @@ ofHistogramApp::ofHistogramApp(
 		background_blend_strength
 	)
 {
-	p_artist = std::make_shared<att::HistogramArtist>(m_image_width, m_image_height, background_color, drawing_margins);
+	p_artist = std::make_shared<att::HistogramArtist>(
+		m_image_width, 
+		m_image_height, 
+		background_color, 
+		drawing_margins,
+		OF_PRIMITIVE_POINTS,
+		file_name);
+
 	p_artist->singularColorMode(point_color);
 
 	p_artist->init(
@@ -42,7 +50,8 @@ ofHistogramApp::ofHistogramApp(
 	int max_iterations, std::array<att::real, 2> init_position, 
 	int init_iterations, 
 	ofColor background_color, 
-	int background_blend_strength) : ofHistogramApp(
+	int background_blend_strength,
+	const std::filesystem::path& file_name) : ofHistogramApp(
 		image_width,
 		image_height,
 		max_iterations,
@@ -52,7 +61,14 @@ ofHistogramApp::ofHistogramApp(
 		background_blend_strength
 	)
 {
-	p_artist = std::make_shared<att::HistogramArtist>(m_image_width, m_image_height, background_color, drawing_margins);
+	p_artist = std::make_shared<att::HistogramArtist>(
+		m_image_width,
+		m_image_height,
+		background_color,
+		drawing_margins,
+		OF_PRIMITIVE_POINTS,
+		file_name);
+
 	p_artist->gradientColorMode(gradient);
 
 	p_artist->init(

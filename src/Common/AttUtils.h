@@ -5,6 +5,9 @@
 
 namespace att {
 
+	const char ALPHA_LETTERS[]= "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+								"abcdefghijklmnopqrstuvwxyz";
+
 	/// <summary>
 	/// Translates the code introduced in Strange Attractors: Creating Patterns in Chaos by Julien C.Sprott
 	/// into parameters.
@@ -24,5 +27,15 @@ namespace att {
 			i++;
 		}
 		return a;
+	}
+
+	std::string generate_random_string(const int length) {
+		std::string output;
+		output.reserve(length);
+
+		for (int i = 0; i < length; i++) 
+			output += ALPHA_LETTERS[rand() % (sizeof(ALPHA_LETTERS) - 1)];
+
+		return output;
 	}
 }
