@@ -104,6 +104,8 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Attractors\CubicSporttAttractor.cpp" />
+    <ClCompile Include="src\Attractors\QuadraticSporttAttractor3D.cpp" />
     <ClCompile Include="src\ofParticlesApp.cpp" />
     <ClCompile Include="src\ofHistogramApp.cpp" />
     <ClCompile Include="src\ofPointSpaceApp2D.cpp" />
@@ -130,6 +132,9 @@
     <ClCompile Include="src\Attractors\ThomasSymmetricAttractor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Attractors\CubicSporttAttractor.h" />
+    <ClInclude Include="src\Attractors\QuadraticSporttAttractor3D.h" />
+    <ClInclude Include="src\Common\AttUtils.h" />
     <ClInclude Include="src\ofAbstractAttractorApp.h" />
     <ClInclude Include="src\ofParticlesApp.h" />
     <ClInclude Include="src\ofHistogramApp.h" />

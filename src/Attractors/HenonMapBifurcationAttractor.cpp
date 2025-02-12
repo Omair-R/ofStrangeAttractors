@@ -7,8 +7,6 @@ std::array<att::real, 2> att::HenonMapBifurcationAttractor::findDerivative(const
 
 	real dx_dt = 1 - m_a * x * x + y;
 	real dy_dt = m_b * x;
-	//dx_dt = (dx_dt - x) / m_step_size;
-	//dy_dt = (dy_dt - y) / m_step_size;
 
 	return std::array<real, 2>{dx_dt, dy_dt};
 }
